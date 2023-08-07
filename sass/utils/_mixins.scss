@@ -1,0 +1,127 @@
+@use "variables" as var;
+$rem-base: 16px;
+@function calculateRem($size) {
+  @return calc($size / $rem-base) * 1rem;
+}
+// ----------------- Text
+@mixin text($text) {
+  $font-sizes: (
+    xs: 12px,
+    s: 16px,
+    m: 18px,
+    l: 24px,
+    xl: 36px,
+  );
+  $line-heights: (
+    xs: 18px,
+    s: 24px,
+    m: 27px,
+    l: 36px,
+    xl: 54px,
+  );
+  font-family: "R-400";
+  font-weight: 400;
+  font-style: normal;
+  color: var.$main-onSurface;
+  font-size: calculateRem(map-get($font-sizes, $text));
+  line-height: calculateRem(map-get($line-heights, $text));
+}
+
+// ----------------- Text-bold
+@mixin text-bold($text-bold) {
+  $font-sizes: (
+    xs: 12px,
+    s: 16px,
+    m: 18px,
+    l: 24px,
+    xl: 36px,
+  );
+  $line-heights: (
+    xs: 18px,
+    s: 24px,
+    m: 27px,
+    l: 36px,
+    xl: 54px,
+  );
+  font-family: "R-700";
+  font-style: normal;
+  color: var.$main-onSurface;
+  font-size: calculateRem(map-get($font-sizes, $text-bold));
+  line-height: calculateRem(map-get($line-heights, $text-bold));
+}
+
+// ----------------- Heading
+@mixin heading($heading) {
+  $font-sizes: (
+    xs: 18px,
+    s: 24px,
+    m: 36px,
+    l: 48px,
+    xl: 64px,
+  );
+  $line-heights: (
+    xs: 27px,
+    s: 36px,
+    m: 54px,
+    l: 72px,
+    xl: 96px,
+  );
+  font-family: "R-700";
+  font-style: normal;
+  font-size: calculateRem(map-get($font-sizes, $heading));
+  line-height: calculateRem(map-get($line-heights, $heading));
+  color: var.$main-onSurface;
+}
+// ----------------- Button
+@mixin button(
+  $padding-y,
+  $padding-x,
+  $text-color,
+  $font-size,
+  $background-color,
+  $border-radius
+) {
+  display: inline-block;
+  padding: $padding-y $padding-x;
+  color: $text-color;
+  font-size: $font-size;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  font-family: "R-400";
+  font-weight: 400;
+  line-height: 150%;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+// ----------------- Flexbox
+@mixin flexbox($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// ----------------- Grid
+@mixin grid($cols, $gap) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  grid-gap: $gap;
+}
+
+// ----------------- Media
+@mixin desktop($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+
+// ----------------- First Mobile
+@mixin mobile($px) {
+  @media (min-width: $px) {
+    @content;
+  }
+}
