@@ -1,0 +1,25 @@
+.todos__container {
+  padding: 10px 20px 30px;
+  @include flexbox(column, start, start);
+  gap: 15px;
+  .todos-card {
+    width: 100%;
+    padding: 20px;
+    background-color: #7800ac97;
+    border-radius: 15px;
+    @include flexbox(row, space-between, center);
+    transition: 0.3s;
+    &:hover {
+      cursor: pointer;
+      background-color: #650090;
+    }
+    p {
+      color: white;
+      text-transform: capitalize;
+    }
+    .complated {
+      color: white;
+      @include flexbox(row, center, center);
+    }
+  }
+}

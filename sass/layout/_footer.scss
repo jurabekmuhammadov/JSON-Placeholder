@@ -1,0 +1,26 @@
+footer {
+  width: 100%;
+  position: sticky;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-top: 2px solid rgb(255, 255, 255);
+  @include flexbox(row, center, center);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  p {
+    color: rgb(227, 0, 0);
+    font-size: 20px;
+    font-family: "Lobster", cursive;
+    letter-spacing: 1px;
+  }
+  @include desktop(500px) {
+    padding: 15px;
+    p {
+      font-size: 18px;
+    }
+  }
+}

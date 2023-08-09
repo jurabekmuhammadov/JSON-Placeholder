@@ -1,0 +1,56 @@
+.users-container {
+  padding: 10px 20px 30px;
+  @include grid(4, 15px);
+  .card {
+    padding: 10px;
+    background-color: #a8beff;
+    border-radius: 10px;
+    @include flexbox(column, space-between, none);
+    gap: 5px;
+    .names {
+      h3 {
+        color: #4a007b;
+      }
+      h4 {
+        color: white;
+      }
+    }
+    .user-address {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    a {
+      text-decoration: underline;
+    }
+    .bottom {
+      margin-top: 15px;
+      @include flexbox(row, space-around, center);
+      a {
+        text-decoration: none;
+        background-color: #eaeaea;
+        padding: 2px 5px;
+        border-radius: 10px;
+        width: 25%;
+        text-align: center;
+        color: #ff0000;
+        font-weight: 500;
+        transition: 0.3s;
+        &:hover {
+          transform: translateY(-10px);
+        }
+      }
+    }
+  }
+  @include desktop(1050px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include desktop(850px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include desktop(550px) {
+    grid-template-columns: 1fr;
+
+  }
+}
